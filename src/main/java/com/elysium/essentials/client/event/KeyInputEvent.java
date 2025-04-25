@@ -2,7 +2,7 @@ package com.elysium.essentials.client.event;
 
 import com.elysium.essentials.Essentials;
 import com.elysium.essentials.client.ModKeyMappings;
-import com.elysium.essentials.network.HarvestAllTriggerPacket;
+import com.elysium.essentials.network.packet.HarvestAllTriggerPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.BlockHitResult;
@@ -18,25 +18,18 @@ public class KeyInputEvent {
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Pre event) {
-        Minecraft mc = Minecraft.getInstance();
+        Minecraft client = Minecraft.getInstance();
 
-        if (mc.player == null || mc.level == null) return;
+        if (client.player == null || client.level == null) return;
 
         boolean current = ModKeyMappings.HARVEST_ALL_KEY.isDown();
 
         if (current != lastState) {
-            var connection = mc.getConnection();
+            var connection = client.getConnection();
             if (connection != null) {
                 connection.send(new HarvestAllTriggerPacket(current));
             }
             lastState = current;
-        }
-
-        // Optional: Check if a block is targeted (for debug or future use)
-        HitResult hit = mc.hitResult;
-        if (hit instanceof BlockHitResult blockHit) {
-            BlockPos targetedPos = blockHit.getBlockPos();
-            // You can use targetedPos here if needed
         }
     }
 }

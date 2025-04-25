@@ -1,11 +1,11 @@
-package com.elysium.essentials.network;
+package com.elysium.essentials.network.status;
 
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class HarvestAllStatus {
+public class ShowRecipeBookStatus {
     private static final ConcurrentHashMap<UUID, Boolean> toggleStates = new ConcurrentHashMap<>();
 
     public static boolean isEnabled(ServerPlayer player) {
@@ -19,4 +19,5 @@ public class HarvestAllStatus {
     public static void clear(ServerPlayer player) {
         toggleStates.remove(player.getUUID());
     }
+
 }

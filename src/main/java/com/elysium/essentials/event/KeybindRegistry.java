@@ -12,5 +12,7 @@ public class KeybindRegistry {
     @SubscribeEvent
     public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(ModKeyMappings.HARVEST_ALL_KEY);
+        event.register(ModKeyMappings.SORT_INV_KEY);
+        event.register(ModKeyMappings.SHOW_RECIPE_BOOK_KEY);
     }
 }

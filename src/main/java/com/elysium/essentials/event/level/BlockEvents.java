@@ -2,7 +2,7 @@ package com.elysium.essentials.event.level;
 
 import com.elysium.essentials.Essentials;
 import com.elysium.essentials.data.tags.ModTags;
-import com.elysium.essentials.network.HarvestAllStatus;
+import com.elysium.essentials.network.status.HarvestAllStatus;
 import com.elysium.essentials.util.BlockBreakUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;

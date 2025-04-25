@@ -1,4 +1,4 @@
-package com.elysium.essentials.network;
+package com.elysium.essentials.network.packet;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;

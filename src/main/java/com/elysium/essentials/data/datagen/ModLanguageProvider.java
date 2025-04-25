@@ -15,5 +15,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModKeyMappings.KEY_CATEGORY, "Elysium's Essentials");
         add(ModKeyMappings.KEY_HARVEST_ALL_TRIGGER, "Harvest All Ores/Logs");
         add(ModKeyMappings.KEY_SORT_INV, "Sort Inventory");
+        add(ModKeyMappings.KEY_SHOW_RECIPE_BOOK, "Toggle Recipe Book in Inventory");
     }
 }

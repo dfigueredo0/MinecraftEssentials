@@ -1,6 +1,7 @@
 package com.elysium.essentials.world.inventory;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -13,23 +14,8 @@ public class InvSeeMenu extends AbstractContainerMenu {
     public InvSeeMenu(int containerId, Inventory viewer, ServerPlayer target) {
         super(MenuType.GENERIC_9x4, containerId);
 
-        for (int row = 0; row < 3; ++row) {
-            for (int col = 0; col < 9; ++col) {
-                this.addSlot(new Slot(target.getInventory(), col + row * 9 + 9, 8 + col * 18, 18 + row * 18));
-            }
-        }
-        for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(target.getInventory(), i, 8 + i * 18, 76));
-        }
-
-        for (int row = 0; row < 3; ++row) {
-            for (int col = 0; col < 9; ++col) {
-                this.addSlot(new Slot(viewer, col + row * 9 + 9, 8 + col * 18, 108 + row * 18));
-            }
-        }
-        for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(viewer, i, 8 + i * 18, 166));
-        }
+        addStandardInventorySlots(target.getInventory(), 8, 18);
+        addStandardInventorySlots(viewer, 8, 108);
     }
 
     @Override
