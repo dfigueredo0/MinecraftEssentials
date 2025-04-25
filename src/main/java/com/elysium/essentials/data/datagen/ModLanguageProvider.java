@@ -13,6 +13,7 @@ public class ModLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(ModKeyMappings.KEY_CATEGORY, "Elysium's Essentials");
-        add(ModKeyMappings.KEY_HARVEST_ALL_TRIGGER, "Harvest All");
+        add(ModKeyMappings.KEY_HARVEST_ALL_TRIGGER, "Harvest All Ores/Logs");
+        add(ModKeyMappings.KEY_SORT_INV, "Sort Inventory");
     }
 }

@@ -12,13 +12,13 @@ import java.util.concurrent.CompletableFuture;
 @EventBusSubscriber(modid = Essentials.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerator {
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent.Server event) {
+    public static void gatherData(GatherDataEvent.Client event) {
         net.minecraft.data.DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         generator.addProvider(true, new ModBlockTagProvider(packOutput, lookupProvider));
 
-        generator.addProvider(false, new ModLanguageProvider(packOutput, "en_us"));
+        generator.addProvider(true, new ModLanguageProvider(packOutput, "en_us"));
     }
 }
