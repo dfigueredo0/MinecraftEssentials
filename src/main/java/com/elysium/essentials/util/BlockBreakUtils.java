@@ -2,6 +2,7 @@ package com.elysium.essentials.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -43,7 +44,10 @@ public class BlockBreakUtils {
             BlockState currentState = level.getBlockState(currentPos);
             if (currentState.getBlock() != targetBlock) continue;
 
-            level.destroyBlock(currentPos, true, player);
+            if (currentState.canHarvestBlock(level, currentPos, player)) {
+                level.destroyBlock(currentPos, true);
+                tool.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+            }
 
             for (BlockPos offset : BlockPos.betweenClosed(-1, -1, -1, 1, 1, 1)) {
                 BlockPos neighbor = currentPos.offset(offset.getX(), offset.getY(), offset.getZ());

@@ -22,7 +22,7 @@ public class FlyCommand {
     }
 
     private int executeSelf(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        ServerPlayer self = EntityArgument.getPlayer(context, "target");
+        ServerPlayer self = context.getSource().getPlayerOrException();
         return toggleFlight(context, self);
     }
 

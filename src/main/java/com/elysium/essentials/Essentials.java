@@ -1,6 +1,7 @@
 package com.elysium.essentials;
 
 import com.elysium.essentials.network.ModNetworking;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -41,10 +42,15 @@ public class Essentials
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.addListener(ModNetworking::register);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        modEventBus.addListener(this::onRegisterPayloadHandlers);
+    }
+
+    private void onRegisterPayloadHandlers(RegisterPayloadHandlersEvent event) {
+        ModNetworking.register(event);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

@@ -7,13 +7,13 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 
-public record HarvestAllTogglePacket(boolean enabled) implements CustomPacketPayload {
-    public static final Type<HarvestAllTogglePacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("essentials", "harvest_all_toggle"));
+public record HarvestAllTriggerPacket(boolean enabled) implements CustomPacketPayload {
+    public static final Type<HarvestAllTriggerPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("essentials", "harvest_all_trigger"));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, HarvestAllTogglePacket> CODEC =
+    public static final StreamCodec<RegistryFriendlyByteBuf, HarvestAllTriggerPacket> CODEC =
             StreamCodec.of(
                     (buf, packet) -> buf.writeBoolean(packet.enabled),
-                    buf -> new HarvestAllTogglePacket(buf.readBoolean())
+                    buf -> new HarvestAllTriggerPacket(buf.readBoolean())
             );
 
     @Override
