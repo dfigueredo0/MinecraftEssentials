@@ -18,6 +18,8 @@ public class ModTags {
     }
 
     public static class Items {
+        public static final TagKey<Item> REPAIRABLE = createTag("repairable");
+
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Essentials.MODID, name));
         }

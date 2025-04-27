@@ -17,8 +17,9 @@ public class DataGenerator {
         PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(true, new ModBlockTagProvider(packOutput, lookupProvider));
-
+        ModBlockTagProvider blockTagProvider = new ModBlockTagProvider(packOutput, lookupProvider);
+        generator.addProvider(true, blockTagProvider);
+        generator.addProvider(true, new ModItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter()));
         generator.addProvider(true, new ModLanguageProvider(packOutput, "en_us"));
     }
 }

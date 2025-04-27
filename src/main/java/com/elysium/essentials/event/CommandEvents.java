@@ -19,6 +19,7 @@ public class CommandEvents {
         new TPACommands(event.getDispatcher());
         new InvSeeCommand(event.getDispatcher());
         new EnderChestCommand(event.getDispatcher());
+        new RepairCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
     }
