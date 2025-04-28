@@ -16,5 +16,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModKeyMappings.KEY_HARVEST_ALL_TRIGGER, "Harvest All Ores/Logs");
         add(ModKeyMappings.KEY_SORT_INV, "Sort Inventory");
         add(ModKeyMappings.KEY_SHOW_RECIPE_BOOK, "Toggle Recipe Book in Inventory");
+
+        add("essentials.tooltip.button.sorter", "Sorter");
+        add("essentials.tooltip.button.sorter.type", "Sort by Type");
+        add("essentials.tooltip.button.sorter.quantity", "Sort by Quantity");
+        add("essentials.tooltip.button.sorter.alphabetically", "Sort Alphabetically");
+
+        add("essentials.button.usage.hovered", "Sorts Inventory");
     }
 }

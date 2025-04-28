@@ -1,6 +1,7 @@
 package com.elysium.essentials;
 
 import com.elysium.essentials.network.ModNetworking;
+import com.elysium.essentials.world.inventory.ModMenuTypes;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import org.slf4j.Logger;
 
@@ -43,10 +44,11 @@ public class Essentials
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModMenuTypes.register(modEventBus);
 
         modEventBus.addListener(this::onRegisterPayloadHandlers);
+        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void onRegisterPayloadHandlers(RegisterPayloadHandlersEvent event) {
